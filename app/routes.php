@@ -13,5 +13,12 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+
+	
+ $content = file_get_contents('http://es.fifa.com/classicfootball/news/rss.xml');
+     $flux = new SimpleXmlElement($content);
+    return View::make('layouts.index')->with("flux",$flux);
+  
+
+	
 });
